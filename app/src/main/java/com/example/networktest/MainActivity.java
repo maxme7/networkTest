@@ -8,15 +8,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView textView;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
 
-    public void sentRequest(View v){
+    public void sentRequest(View v) {
+        TextView textView = findViewById(R.id.textView);
+        textView.setText(Utilities.markPairs("123456"));
     }
 
 }

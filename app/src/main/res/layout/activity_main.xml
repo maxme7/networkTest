@@ -39,12 +39,13 @@
         android:focusable="true"
         android:focusableInTouchMode="true"
         android:gravity="center_horizontal"
-        android:inputType="textPersonName"
+        android:inputType="number"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:nextFocusForward="@id/button">
 
         <requestFocus />
     </EditText>
