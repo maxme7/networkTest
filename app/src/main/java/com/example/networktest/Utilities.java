@@ -7,6 +7,7 @@ import android.text.Spanned;
 import android.text.style.StyleSpan;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Utilities {
 
@@ -44,17 +45,22 @@ public class Utilities {
 
     public static SpannableString markPairs(ArrayList<int[]> indexPairs, String number) {
         SpannableStringBuilder sb = new SpannableStringBuilder();
-        for (int[] pair : indexPairs) {
-            SpannableString boldText = new SpannableString(number);
+        Iterator<int[]> itr = indexPairs.iterator();
+        while (itr.hasNext()) {
+            int[] pair = itr.next();
             int firstDigitIndex = pair[0];
             int secondDigitIndex = pair[1];
+            SpannableString boldText = new SpannableString(number + " → (" + firstDigitIndex + ", " + secondDigitIndex + ")");
             StyleSpan firstDigitSpan = new StyleSpan(Typeface.BOLD);
             StyleSpan secondDigitSpan = new StyleSpan(Typeface.BOLD);
             boldText.setSpan(firstDigitSpan, firstDigitIndex, firstDigitIndex + 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             boldText.setSpan(secondDigitSpan, secondDigitIndex, secondDigitIndex + 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-            sb.append(boldText).append("\n");
+            sb.append(boldText);
+            if (itr.hasNext()) {
+                sb.append("\n");
+            }
         }
-        return SpannableString.valueOf(sb);
+        return sb.length() != 0 ? SpannableString.valueOf(sb) : SpannableString.valueOf("No common Devisors!");
     }
 
     public static SpannableString markPairs(String number) {

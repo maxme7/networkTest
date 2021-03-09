@@ -1,6 +1,7 @@
 package com.example.networktest;
 
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.TextView;
 
@@ -15,8 +16,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void sentRequest(View v) {
+    }
+
+    public void markDigits(View v) {
         TextView textView = findViewById(R.id.textView);
-        textView.setText(Utilities.markPairs("123456"));
+        TextView editText = findViewById(R.id.editText);
+
+        textView.setMovementMethod(new ScrollingMovementMethod());
+
+        textView.setText(Utilities.markPairs(editText.getText().toString()));
     }
 
 }
